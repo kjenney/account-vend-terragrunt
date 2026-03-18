@@ -37,7 +37,8 @@ locals {
 }
 
 inputs = {
-  iam_user_name = local.account_name
+  iam_user_name    = local.account_name
+  assume_role_arns = split(",", get_env("ASSUME_ROLE_ARNS"))
 
   # Password policy settings
   minimum_password_length         = 14

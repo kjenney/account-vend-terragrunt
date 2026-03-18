@@ -1,3 +1,8 @@
+variable "assume_role_arns" {
+  description = "List of role ARNs the IAM user is allowed to assume."
+  type        = list(string)
+}
+
 variable "iam_user_name" {
   description = "Name of the IAM user to create in the new account."
   type        = string

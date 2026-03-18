@@ -6,9 +6,19 @@ resource "aws_iam_access_key" "this" {
   user = aws_iam_user.this.name
 }
 
-resource "aws_iam_user_policy_attachment" "admin" {
-  user       = aws_iam_user.this.name
-  policy_arn = "arn:aws:iam::aws:policy/AdministratorAccess"
+resource "aws_iam_user_policy" "assume_role" {
+  user = aws_iam_user.this.name
+
+  policy = jsonencode({
+    Version = "2012-10-17"
+    Statement = [
+      {
+        Effect   = "Allow"
+        Action   = "sts:AssumeRole"
+        Resource = var.assume_role_arns
+      }
+    ]
+  })
 }
 
 resource "aws_iam_account_password_policy" "this" {
