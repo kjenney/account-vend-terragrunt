@@ -21,6 +21,11 @@ terragrunt --working-dir infrastructure/account-bootstrap output -raw iam_access
 terragrunt --working-dir infrastructure/account-bootstrap output -raw iam_secret_access_key
 ```
 
+## Assuming IAM Roles
+
+`ASSUME_ROLE_ARNS` is a comma-separated string.
+
+
 To assume the first role in `ASSUME_ROLE_ARNS` using the provisioned IAM user credentials:
 
 ```
