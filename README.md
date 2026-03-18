@@ -10,5 +10,5 @@ Terragrunt to deploy a new AWS account in an AWS organization and provosion an I
 
 ```
 source .env
-terragrunt run-all apply
+terragrunt run --all apply
 ```
