@@ -1,0 +1,13 @@
+# account-vend-terragrunt
+
+Terragrunt to deploy a new AWS account in an AWS organization and provosion an IAM user to manage the account.
+
+## Run it
+
+```
+export MANAGEMENT_ACCOUNT_ID="123456789012"      # <--- Replace with actual AWS Account ID
+export ACCOUNT_NAME="my-new-account"             # <--- Friendly name for the new AWS account
+export ACCOUNT_EMAIL="new-account@example.com"   # <--- Unique email address for the new account
+export ACCOUNT_ALIAS="my-new-account"            # <--- IAM account alias for the new account
+terragrunt run-all apply
+```
