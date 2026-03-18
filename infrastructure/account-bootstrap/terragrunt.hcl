@@ -34,7 +34,7 @@ terraform {
 }
 
 locals {
-  account_alias = get_env("ACCOUNT_ALIAS")
+  account_alias = get_env("ACCOUNT_NAME")
 }
 
 inputs = {

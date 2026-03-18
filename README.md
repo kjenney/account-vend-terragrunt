@@ -4,10 +4,9 @@ Terragrunt to deploy a new AWS account in an AWS organization and provosion an I
 
 ## Run it
 
+See `.env-example` for the environment variables that need to be passed to Terragrunt. Copy `.env.example` to `.env`, change the values to match your environment and run:
+
 ```
-export MANAGEMENT_ACCOUNT_ID="123456789012"      # <--- Replace with actual AWS Account ID
-export ACCOUNT_NAME="my-new-account"             # <--- Friendly name for the new AWS account
-export ACCOUNT_EMAIL="new-account@example.com"   # <--- Unique email address for the new account
-export ACCOUNT_ALIAS="my-new-account"            # <--- IAM account alias for the new account
+source .env
 terragrunt run-all apply
 ```
