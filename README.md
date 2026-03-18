@@ -10,5 +10,13 @@ Terragrunt to deploy a new AWS account in an AWS organization and provosion an I
 
 ```
 source .env
+terragrunt run --all init
 terragrunt run --all apply
+```
+
+To get the AWS credentials for the newly created IAM user run:
+
+```
+terragrunt --working-dir infrastructure/account-bootstrap output -raw iam_access_key_id
+terragrunt --working-dir infrastructure/account-bootstrap output -raw iam_secret_access_key
 ```

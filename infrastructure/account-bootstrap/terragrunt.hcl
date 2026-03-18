@@ -28,21 +28,18 @@ provider "aws" {
 EOF
 }
 
-# https://github.com/terraform-aws-modules/terraform-aws-iam/tree/master/modules/iam-account
 terraform {
-  source = "git::https://github.com/terraform-aws-modules/terraform-aws-iam.git//modules/iam-account?ref=v6.4.0"
+  source = "${get_repo_root()}/modules/account-bootstrap"
 }
 
 locals {
-  account_alias = get_env("ACCOUNT_NAME")
+  account_name = get_env("ACCOUNT_NAME")
 }
 
 inputs = {
-  # Sets the IAM account alias (used in the AWS sign-in URL)
-  account_alias = local.account_alias
+  iam_user_name = local.account_name
 
   # Password policy settings
-  create_account_password_policy  = true
   minimum_password_length         = 14
   require_lowercase_characters    = true
   require_uppercase_characters    = true

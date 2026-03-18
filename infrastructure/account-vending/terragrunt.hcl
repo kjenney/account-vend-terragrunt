@@ -2,9 +2,19 @@ include "root" {
   path = find_in_parent_folders("root.hcl")
 }
 
-# https://github.com/tmknom/terraform-aws-organizations-account
+# Provider runs in the management account
+generate "provider" {
+  path      = "provider.tf"
+  if_exists = "overwrite_terragrunt"
+  contents  = <<EOF
+provider "aws" {
+  region = "us-east-1"
+}
+EOF
+}
+
 terraform {
-  source = "git::https://github.com/tmknom/terraform-aws-organizations-account.git//?ref=e32f35b"
+  source = "${get_repo_root()}/modules/account-vending"
 }
 
 locals {
